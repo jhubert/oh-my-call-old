@@ -50,7 +50,15 @@ GEM
       nokogiri (>= 1.5.0)
     database_cleaner (0.8.0)
     diff-lcs (1.1.3)
+    draper (1.1.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     erubis (2.7.0)
+    factory_girl (4.0.0)
+      activesupport (>= 3.0.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     ffi (1.4.0)
     gherkin (2.11.2)
       json (>= 1.4.6)
@@ -98,6 +106,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
+    request_store (1.0.5)
     rspec-core (2.12.2)
     rspec-expectations (2.12.1)
       diff-lcs (~> 1.1.3)
@@ -115,6 +124,12 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda (3.1.1)
+      shoulda-context (~> 1.0)
+      shoulda-matchers (~> 1.2)
+    shoulda-context (1.0.0)
+    shoulda-matchers (1.2.0)
+      activesupport (>= 3.0.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -138,9 +153,13 @@ DEPENDENCIES
   capybara
   cucumber-rails
   database_cleaner
+  draper
+  factory_girl
+  faker
   oj
   rabl
   rails (= 3.2.12)
   rails-api
   rspec-rails
+  shoulda
   sqlite3
