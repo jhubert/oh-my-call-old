@@ -13,4 +13,17 @@ describe PeopleController do
       response.should render_template :index
     end
   end
+
+  describe 'GET #show' do
+    it 'gets a single person' do
+      person = FactoryGirl.create(:person)
+      get :show, id: person
+      assigns(:person).should == person
+    end
+
+    it 'renders the show view' do
+      get :show, id: FactoryGirl.create(:person)
+      response.should render_template :show
+    end
+  end
 end

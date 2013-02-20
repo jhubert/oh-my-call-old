@@ -6,6 +6,11 @@ When %{I request the people list} do
   step %{I get "/people"}
 end
 
+When %{I request the info for one of the people} do
+  @person = Person.all.sort_by { rand }.first.decorate
+  step %{I get "#{person_path(@person)}"}
+end
+
 Then %{I should receive a JSON array of people} do
   body = Oj.load(@response.body)
   body.should be_a(Array)
@@ -22,4 +27,18 @@ Then %{I should receive a JSON array of people} do
       keys.should include('situations')
     end
   end
+end
+
+Then %{I should receive a JSON person} do
+  body = Oj.load(@response.body)
+  body.should be_a(Hash)
+  body['phone_number'].should == @person.phone_number
+  body['fullname'].should == @person.fullname
+  body['nickname'].should == @person.nickname
+  body['active'].should == @person.active
+  body['url'].should == @person.url
+  body['response_count'].should == @person.response_count
+  body['call_count'].should == @person.call_count
+  body['situations'].should == @person.situations
+
 end
