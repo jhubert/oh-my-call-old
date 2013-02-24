@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :person do
     phone_number { Faker::PhoneNumber.phone_number}
-    fullname { Faker::Lorem.words.join(" ") }
+    fullname { Faker::Name.name }
 
   end
 end

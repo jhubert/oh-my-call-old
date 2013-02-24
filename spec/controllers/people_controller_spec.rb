@@ -26,4 +26,34 @@ describe PeopleController do
       response.should render_template :show
     end
   end
+
+  describe 'PATCH/PUT #update' do
+    before(:each) do
+      @person = FactoryGirl.create(:person,
+                                   fullname: "Original Full Name",
+                                   nickname: "Original Nickname")
+    end
+
+    context 'updating a person' do
+      it 'can change the full name' do
+        put :update, id: @person.id, fullname: 'New Full Name'
+        @person.reload
+        @person.fullname.should == "New Full Name"
+      end
+
+      it 'can change the nickname' do
+        put :update, id: @person.id, nickname: 'New Nickname'
+        @person.reload
+        @person.nickname.should == "New Nickname"
+      end
+
+      it 'can change the situations via array' do
+        pending "Need to figure out situations"
+      end
+
+      it 'can change the situations via CSV' do
+        pending "Need to figure out situations"
+      end
+    end
+  end
 end
